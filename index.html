@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>MyStream — Personal Music</title>
+
+  <!-- PWA-ish meta so "Add to Home Screen" looks nicer -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <div class="title">MyStream</div>
+      <div class="search-wrap">
+        <input id="searchInput" placeholder="Search songs, artists, albums" aria-label="Search" />
+      </div>
+      <button id="openQueueBtn" class="icon-btn" title="Open queue">☰</button>
+    </header>
+
+    <main id="main" class="main">
+      <!-- Home: recently added + categories -->
+      <section id="homeSection" class="section">
+        <h2 class="section-title">Recently Added</h2>
+        <div id="albumGrid" class="grid"></div>
+      </section>
+
+      <!-- Albums / Tracks view -->
+      <section id="albumSection" class="section hidden">
+        <button class="back-btn" id="backBtn">← Back</button>
+        <div class="album-head">
+          <img id="albumArtLarge" class="album-art-large" alt="Album art">
+          <div class="album-meta">
+            <div id="albumName" class="album-name"></div>
+            <div id="albumArtist" class="album-artist muted"></div>
+            <div id="albumDesc" class="muted small"></div>
+          </div>
+        </div>
+        <div id="tracksList" class="tracks"></div>
+      </section>
+    </main>
+
+    <!-- Floating mini Now Playing bar -->
+    <div id="nowBar" class="nowbar hidden" role="region" aria-label="Now playing">
+      <img id="nowArt" class="now-art" alt="Now playing art">
+      <div class="now-info">
+        <div id="nowTitle" class="now-title">—</div>
+        <div id="nowArtist" class="muted small">—</div>
+        <div class="progress-wrap" aria-hidden="true"><div id="progressBar" class="progress"><div id="progressFill" class="progress-fill"></div></div></div>
+      </div>
+      <div class="now-controls">
+        <button class="icon-btn" id="prevBtn" title="Previous">⏮</button>
+        <button class="icon-btn" id="playBtn" title="Play/Pause">▶</button>
+        <button class="icon-btn" id="nextBtn" title="Next">⏭</button>
+        <button class="icon-btn" id="openNowBtn" title="Open player">⤢</button>
+      </div>
+    </div>
+
+    <!-- Full player modal -->
+    <div id="playerModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="player-card">
+        <div class="player-header">
+          <div class="drag-handle"></div>
+          <button id="closePlayer" class="icon-btn">✕</button>
+        </div>
+        <div class="player-body">
+          <img id="playerArt" class="player-art" alt="Artwork">
+          <div id="playerTitle" class="player-title"></div>
+          <div id="playerArtist" class="muted small"></div>
+
+          <div class="seek-row">
+            <div id="curTime" class="muted tiny">0:00</div>
+            <div class="seek-bar" id="seekBar" role="slider" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+              <div id="seekFill" class="seek-fill"></div>
+            </div>
+            <div id="durTime" class="muted tiny">0:00</div>
+          </div>
+
+          <div class="player-controls">
+            <button id="shuffleBtn" class="control">Shuffle</button>
+            <button id="prevBtn2" class="control">⏮</button>
+            <button id="playBtn2" class="control big">▶</button>
+            <button id="nextBtn2" class="control">⏭</button>
+            <button id="repeatBtn" class="control">Repeat</button>
+          </div>
+
+          <div class="video-button-area" id="videoArea"></div>
+
+          <div class="upnext">
+            <div class="upnext-title">Up Next</div>
+            <div id="queueList" class="queue-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden audio element (plays audio) -->
+    <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
