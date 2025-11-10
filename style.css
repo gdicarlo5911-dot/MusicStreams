@@ -1,0 +1,70 @@
+:root{
+  --bg:#080808; --card:#0f0f10; --muted:#9da3ab; --accent:#ff375f; --glass: rgba(255,255,255,0.02);
+  --radius:12px; --gap:12px; --maxwidth:980px;
+  font-family: -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#050505);color:#fff;min-height:100vh;display:flex;justify-content:center}
+.app-shell{width:100%;max-width:var(--maxwidth);padding:14px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.title{font-weight:700;font-size:18px}
+.search-wrap{flex:1}
+.search-wrap input{width:100%;padding:8px 10px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);color:#fff}
+.icon-btn{background:transparent;border:0;color:#fff;padding:8px;font-size:16px}
+.section-title{margin:6px 0 10px 0;font-size:14px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.album-card{background:var(--card);padding:8px;border-radius:12px;display:flex;flex-direction:column;gap:8px;cursor:pointer}
+.album-art{width:100%;aspect-ratio:1/1;border-radius:8px;object-fit:cover;background:#111}
+.album-meta{font-size:13px;color:var(--muted)}
+.hidden{display:none}
+
+/* Album page */
+.back-btn{background:transparent;border:0;color:#fff;padding:8px;margin-bottom:8px;display:inline-block}
+.album-head{display:flex;gap:12px;align-items:center}
+.album-art-large{width:120px;height:120px;border-radius:8px;object-fit:cover}
+.album-name{font-weight:700;font-size:16px}
+.album-artist{color:var(--muted);font-size:13px}
+.tracks{margin-top:12px}
+.track-row{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:var(--glass);margin-bottom:8px}
+.track-left{display:flex;gap:10px;align-items:center}
+.small-art{width:48px;height:48px;border-radius:6px;object-fit:cover}
+.track-title{font-size:15px}
+.track-sub{font-size:13px;color:var(--muted)}
+
+/* Now bar */
+.nowbar{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;right:14px;max-width:980px;background:linear-gradient(180deg,rgba(255,255,255,0.02),#070707);padding:8px;border-radius:14px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 24px rgba(0,0,0,0.6)}
+.now-art{width:56px;height:56px;border-radius:8px;object-fit:cover}
+.now-info{flex:1}
+.now-title{font-weight:600}
+.progress{height:6px;background:rgba(255,255,255,0.04);border-radius:6px;margin-top:6px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),#ff8aa0);width:0%}
+
+/* Modal player */
+.modal{position:fixed;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:12px;background:linear-gradient(0deg,rgba(0,0,0,0.5),transparent)}
+.player-card{width:100%;max-width:980px;background:#0b0b0b;border-radius:14px;padding:12px}
+.player-header{display:flex;justify-content:flex-end}
+.player-body{padding:6px 12px}
+.player-art{width:180px;height:180px;border-radius:12px;object-fit:cover;margin:0 auto;display:block}
+.player-title{text-align:center;font-weight:700;margin-top:10px}
+.player-artist{text-align:center;color:var(--muted);margin-top:6px}
+.seek-row{display:flex;align-items:center;gap:8px;margin-top:12px}
+.seek-bar{flex:1;height:6px;background:rgba(255,255,255,0.03);border-radius:6px;position:relative;cursor:pointer}
+.seek-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--accent),#ff8aa0);width:0}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.tiny{font-size:11px}
+.player-controls{display:flex;justify-content:space-between;gap:10px;padding:12px 10px}
+.control{background:rgba(255,255,255,0.03);border:0;padding:8px;border-radius:8px;color:#fff}
+.control.big{font-size:20px;padding:12px 18px}
+
+/* queue */
+.upnext{margin-top:12px}
+.upnext-title{font-weight:700;margin-bottom:8px}
+.queue-list{max-height:220px;overflow:auto}
+.queue-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);margin-bottom:8px}
+
+/* responsive tweaks */
+@media (min-width:900px){
+  .album-art-large{width:220px;height:220px}
+  .album-card{padding:12px}
+}
